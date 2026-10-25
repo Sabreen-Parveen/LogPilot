@@ -1,0 +1,26 @@
+[project]
+name = "logpilot"
+version = "0.1.0"
+description = "AI agent that triages failing CI/test logs"
+requires-python = ">=3.11"
+dependencies = []  # added per milestone: langgraph, chromadb, sentence-transformers, mcp, fastapi, scikit-learn
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+logpilot-gen = "logpilot.data.synth:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logpilot"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
